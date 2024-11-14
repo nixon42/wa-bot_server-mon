@@ -1,16 +1,14 @@
 [Unit]
-Description=Server Monitoring 
+Description=Server Monitoring Bot
 After=network.target
+
+
 
 [Service]
 Type=simple
-WorkingDirectory=/path/to/your/script
 ExecStart=/path/to/your/script/venv/bin/python /path/to/your/script/script_name.py
 Restart=always
 User=your_user_name
-Group=your_group_name
-Environment=VIRTUAL_ENV=/path/to/your/script/venv
-Environment=PATH=/path/to/your/script/venv/bin:$PATH
 
 [Install]
 WantedBy=multi-user.target

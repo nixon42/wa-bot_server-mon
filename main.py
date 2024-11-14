@@ -10,6 +10,8 @@ is_down: bool = False
 last_down_time: datetime.datetime = None
 notification_sent: bool = False
 
+print("====== SERVER MONITORING BOT ======")
+
 while True:
     sleep(DELAY)
 
