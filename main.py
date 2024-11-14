@@ -17,10 +17,14 @@ while True:
 
     # Verifikasi apakah server down dengan beberapa percobaan
     ping_results = [not ping(SERVER_IP) for _ in range(MAX_RETRIES)]
-    server_is_down = any(ping_results)
+    # Jika semua ping gagal, dianggap server DOWN
+    all_ping_failed = all(ping_results)
+    # Jika semua ping berhasil, dianggap server UP
+    all_ping_successful = not any(ping_results)
+
 
     # Jika server down dan notifikasi belum dikirim
-    if server_is_down and not is_down and not notification_sent:
+    if all_ping_failed and not is_down and not notification_sent:
         is_down = True
         notification_sent = True
         current_time = get_wib_time()
@@ -33,7 +37,7 @@ while True:
             print(f"Failed to send WhatsApp message: {e}")
 
     # Jika server sudah kembali online setelah sebelumnya down
-    elif not server_is_down and is_down:
+    elif all_ping_successful and is_down:
         is_down = False
         notification_sent = False
         current_time = get_wib_time()
@@ -48,5 +52,5 @@ while True:
         last_down_time = None
 
     # Menghindari spam notifikasi UP ketika server sudah dalam status UP
-    if not server_is_down and is_down and not notification_sent:
+    if all_ping_successful and is_down and not notification_sent:
         notification_sent = False  # Reset notification_sent untuk pengiriman UP berikutnya
