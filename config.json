@@ -1,4 +1,5 @@
 {
-    "delay_sec": 1,
-    "max_timeout_retry": 2
+    "delay_sec": 3,
+    "max_timeout_retry": 8,
+    "print_log": true
 }

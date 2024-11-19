@@ -10,6 +10,7 @@ SERVER_IP = os.environ['SERVER_IP']
 CHAT_ID = os.environ['CHAT_ID']
 DELAY: float = CONFIG['delay_sec']
 MAX_RETRIES: int = CONFIG['max_timeout_retry']
+PRINT_LOG: bool = CONFIG['print_log']
 
 MSG = """
 *******************************
