@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/path/to/your/script/venv/bin/python /path/to/your/script/script_name.py
+ExecStart=/path/to/your/script/run.sh
 Restart=always
 User=your_user_name
 
