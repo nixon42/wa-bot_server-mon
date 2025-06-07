@@ -2,13 +2,11 @@
 Description=Server Monitoring Bot
 After=network.target
 
-
-
 [Service]
 Type=simple
 ExecStart=/path/to/your/script/run.sh
 Restart=always
-User=your_user_name
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
